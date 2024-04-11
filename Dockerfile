@@ -28,11 +28,11 @@ RUN bun run build
 
 # copy production dependencies and source code into final image
 FROM base AS release
-# COPY --from=install /temp/prod/node_modules node_modules
-COPY --from=prerelease /app/views .
-COPY --from=prerelease /app/public .
-COPY --from=prerelease /app/bin/app .
+COPY --from=install /temp/prod/node_modules node_modules
+COPY --from=prerelease /app/views views
+COPY --from=prerelease /app/public public
+COPY --from=prerelease /app/bin bin
 
 # run the app
 EXPOSE 3000/tcp
-CMD ["/app/app"]
+CMD ["/app/bin/app"]

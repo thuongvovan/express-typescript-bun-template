@@ -4,6 +4,7 @@ import path from "path";
 import httpError, { type HttpError } from "http-errors";
 import logger from "morgan";
 import cookieParser from "cookie-parser";
+import "hbs";
 
 import routes from "./routes/index";
 import users from "./routes/user";
